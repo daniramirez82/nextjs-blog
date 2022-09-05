@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import PageHeader from '@atlaskit/page-header';
 
 const name = 'Daniel Dj';
 export const siteTitle = "Dj's blog";
@@ -26,19 +27,20 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
+
         {home ? (
           <> <div className={`${utilStyles.borderCircle} drop-shadow-xl`} >
 
-            <Image
-              priority
-              src="/profile.jpg"
-              className={`${utilStyles.borderCircle}`}
-              height={144}
-              width={144}
-              alt={name}
-            />
-          </div>
+            {/* <Avatar appearance='circle'
+              src='/profile.jpg'
+              size='xxlarge'
+              name='Daniel Ramirez'
+            /> */}
 
+          </div>
+            <PageHeader>
+              {name}
+            </PageHeader>
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
