@@ -8,6 +8,7 @@ import styles from './index.module.css';
 import MainCard from '../components/cards/MainCard';
 import { useEffect, useState } from 'react';
 import { getNews } from '../lib/api';
+import { useSelector } from 'react-redux';
 
 // this is the principal component at the beggining we are exported a head componen for change the name 
 // of the page and the fav icon of each page, then the layout component and the siteTitle variable imported are the blue print for all the pages
@@ -27,23 +28,25 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   const [results5, setResults5] = useState([]);
-
+  const category = useSelector(state => state.category.category);
   useEffect(async () => {
-    const response = await getNews();
-    console.log('la respuesta en el componente:', response.results.slice(0,5));
-    const tempResults = response.results.slice(0,5);
-    // const {content, image_url, link, pubDate, title} = response.results
+    const response = await getNews(category);
+    const tempResults = response.articles.slice(0,20);
     setResults5 (tempResults);
-  },[results5])
+  },[category]);
+
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <header className={styles.header}>
-        <h1 className={styles['title-big']}>THE BLOG</h1>
+        <h1 className={styles['title-big']}>THE NEWS</h1>
       </header>
-      {results5 && results5.map(item => <MainCard data={item} />)}
+      <p>{category}</p>
+      <ul>
+      {results5 && results5.map(item => <li id={item.title}><MainCard data={item} /></li>)}
+      </ul>
 
       <section className="underline">
         <p>[I'm a web developer student!!!]</p>

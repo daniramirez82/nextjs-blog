@@ -4,12 +4,25 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import DropdownMenu, { DropdownItem, DropdownItemGroup } from '@atlaskit/dropdown-menu'
+import PageHeader from '@atlaskit/page-header';
 import Avatar from '@atlaskit/avatar';
+import { useDispatch } from 'react-redux'
+import { updateCategory } from '../store/categoryStore';
 
 const name = 'Daniel Dj';
 export const siteTitle = "Dj's blog";
 
 export default function Layout({ children, home }) {
+
+  const dispatch = useDispatch();
+
+  const myCategories = ['Latest', 'Sports', 'Technology', 'Spain', 'FC Barcelona', 'Funny Cats'];
+
+  const clickHandler = (e)=>{
+    console.log(e.target.textContent);
+    const category = e.target.textContent;
+    dispatch(updateCategory(category));
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -34,20 +47,14 @@ export default function Layout({ children, home }) {
             size='large'
             name='Daniel Ramirez'
           />
-
-          <span className={styles.title}>The Blog</span>
+          <PageHeader>The News</PageHeader>
         </div>
 
 
         <nav>
           <DropdownMenu trigger="Menu">
             <DropdownItemGroup>
-              <DropdownItem>Edit</DropdownItem>
-              <DropdownItem>Share</DropdownItem>
-              <DropdownItem>Move</DropdownItem>
-              <DropdownItem>Clone</DropdownItem>
-              <DropdownItem>Delete</DropdownItem>
-              <DropdownItem>Report</DropdownItem>
+              {myCategories.map((cat)=> <DropdownItem onClick={clickHandler}>{cat}</DropdownItem>)}
             </DropdownItemGroup>
           </DropdownMenu>
         </nav>
