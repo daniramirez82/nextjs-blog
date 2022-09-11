@@ -1,0 +1,28 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* make a break point for .wrapper after 765px flex direction will be row */
+
+
+.image{
+    object-fit: cover;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.date{
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.548);
+}
+
+.title{
+    font-size: 2rem;
+    opacity: 0.95;
+}

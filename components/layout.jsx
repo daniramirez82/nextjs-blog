@@ -3,7 +3,8 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
-import PageHeader from '@atlaskit/page-header';
+import DropdownMenu, { DropdownItem, DropdownItemGroup } from '@atlaskit/dropdown-menu'
+import Avatar from '@atlaskit/avatar';
 
 const name = 'Daniel Dj';
 export const siteTitle = "Dj's blog";
@@ -27,59 +28,41 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
+        <div className={styles['header-avatar']}>
+          <Avatar appearance='circle'
+            src='/profile.jpg'
+            size='large'
+            name='Daniel Ramirez'
+          />
 
-        {home ? (
-          <> <div className={`${utilStyles.borderCircle} drop-shadow-xl`} >
+          <span className={styles.title}>The Blog</span>
+        </div>
 
-            {/* <Avatar appearance='circle'
-              src='/profile.jpg'
-              size='xxlarge'
-              name='Daniel Ramirez'
-            /> */}
 
-          </div>
-            <PageHeader>
-              {name}
-            </PageHeader>
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <div className={`${utilStyles.borderCircle} drop-shadow-2xl`} >
-
-              <Link href="/">
-                <a>
-
-                  <Image
-                    priority
-                    src="/profile.jpg"
-                    className={utilStyles.borderCircle}
-                    height={108}
-                    width={108}
-                    alt={name}
-                  />
-                </a>
-              </Link>
-            </div>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={`${utilStyles.colorInherit} font-bold`}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+        <nav>
+          <DropdownMenu trigger="Menu">
+            <DropdownItemGroup>
+              <DropdownItem>Edit</DropdownItem>
+              <DropdownItem>Share</DropdownItem>
+              <DropdownItem>Move</DropdownItem>
+              <DropdownItem>Clone</DropdownItem>
+              <DropdownItem>Delete</DropdownItem>
+              <DropdownItem>Report</DropdownItem>
+            </DropdownItemGroup>
+          </DropdownMenu>
+        </nav>
       </header>
       <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <button className='bg-indigo-500 rounded-lg p-5 hover:bg-indigo-700'>
-              <a>← Back to home</a>
-            </button>
 
-          </Link>
-        </div>
-      )}
+      <footer className={styles.backToHome}>
+        <Link href="/">
+          <button className='bg-indigo-500 rounded-lg p-5 hover:bg-indigo-700'>
+            <a>← Back to home</a>
+          </button>
+
+        </Link>
+      </footer>
+
     </div>
   );
 }

@@ -1,0 +1,12 @@
+.title-big{
+    font-size: 5rem;
+    opacity: 0.9;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.808);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.808);
+    margin: 20px 0;
+}

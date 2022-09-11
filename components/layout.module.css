@@ -6,7 +6,13 @@
   
   .header {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+  .header-avatar{
+    display: flex;
     align-items: center;
   }
   
