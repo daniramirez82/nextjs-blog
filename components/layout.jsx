@@ -18,8 +18,7 @@ export default function Layout({ children, home }) {
 
   const myCategories = ['Latest', 'Sports', 'Technology', 'Spain', 'FC Barcelona', 'Funny Cats'];
 
-  const clickHandler = (e)=>{
-    console.log(e.target.textContent);
+  const clickHandler = (e) => {
     const category = e.target.textContent;
     dispatch(updateCategory(category));
   }
@@ -47,14 +46,16 @@ export default function Layout({ children, home }) {
             size='large'
             name='Daniel Ramirez'
           />
-          <PageHeader>The News</PageHeader>
+          <div className={styles['page-header-cont']}>
+            <PageHeader>The News</PageHeader>
+          </div>
         </div>
 
 
         <nav>
           <DropdownMenu trigger="Menu">
             <DropdownItemGroup>
-              {myCategories.map((cat)=> <DropdownItem onClick={clickHandler}>{cat}</DropdownItem>)}
+              {myCategories.map((cat) => <DropdownItem onClick={clickHandler}>{cat}</DropdownItem>)}
             </DropdownItemGroup>
           </DropdownMenu>
         </nav>

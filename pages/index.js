@@ -31,8 +31,9 @@ export default function Home({ allPostsData }) {
   const category = useSelector(state => state.category.category);
   useEffect(async () => {
     const response = await getNews(category);
-    const tempResults = response.articles.slice(0,20);
-    setResults5 (tempResults);
+    const tempResults = response.slice(0,20);
+    console.log(tempResults);
+    setResults5(tempResults);
   },[category]);
 
   return (
@@ -41,7 +42,9 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <header className={styles.header}>
+        <hr/>  
         <h1 className={styles['title-big']}>THE NEWS</h1>
+        <hr/>
       </header>
       <p>{category}</p>
       <ul>
