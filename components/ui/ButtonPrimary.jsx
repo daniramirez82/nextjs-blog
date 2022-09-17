@@ -14,14 +14,11 @@ const ButtonPrimary = ({ children }) => {
   }, []);
 
   const handleScroll = (e) => {
-    console.log("--HANDLE SCROLL---", window.scrollY);
     if (window.scrollY >= 400) {
       if (!activeBtn) {
-        console.log(" -- TRUE -- activation");
         setActiveBtn(true);
       }
     } else {
-      console.log("----FALSE ACTIVATION ----");
       setActiveBtn(false);
     }
   };
@@ -38,10 +35,10 @@ const ButtonPrimary = ({ children }) => {
         activeBtn ? styles.active : styles.hide
       }`}
     >
-      <Button appearance="primary" onClick={goUp}>
+      <Button appearance='warning' onClick={goUp}>
         {children}
       </Button>
-      ;
+      
     </div>
   );
 };

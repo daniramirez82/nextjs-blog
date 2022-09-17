@@ -12,6 +12,7 @@
     "@atlaskit/page-header": "^10.3.0",
     "@reduxjs/toolkit": "^1.8.5",
     "date-fns": "^2.29.2",
+    "framer-motion": "^7.3.5",
     "gray-matter": "^4.0.3",
     "next": "latest",
     "react": "17.0.2",

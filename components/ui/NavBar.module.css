@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  
+  .header-avatar {
+    display: flex;
+    align-items: center;
+  }
+
+  .page-header-cont {
+    margin-left: 0.5rem;
+  }

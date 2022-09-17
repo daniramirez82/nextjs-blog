@@ -5,7 +5,7 @@
   right: 50vw;
   transform: translateX(50%);
   display: block;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 600ms ease-in-out;
 }
 
 .hide {

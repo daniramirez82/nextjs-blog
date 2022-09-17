@@ -6,24 +6,13 @@
   height: calc(var(--vh, 1vh) * 100);
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.header-avatar {
-  display: flex;
-  align-items: center;
-}
 
 .backToHome {
   margin: 3rem 0 0;
 }
 
-.page-header-cont {
-  margin-left: 0.5rem;
-}
+
 
 .main {
   position: relative;

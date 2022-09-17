@@ -1,30 +1,14 @@
 import Head from "next/head";
 import styles from "./layout.module.css";
 import Link from "next/link";
-import DropdownMenu, {
-  DropdownItem,
-  DropdownItemGroup,
-} from "@atlaskit/dropdown-menu";
-import PageHeader from "@atlaskit/page-header";
-import Avatar from "@atlaskit/avatar";
-import { useDispatch } from "react-redux";
-import { updateCategory } from "../store/categoryStore";
 import { useEffect } from "react";
+import NavBar from "./ui/NavBar";
 
 const name = "Daniel Dj";
 export const siteTitle = "Dj's blog";
 
 export default function Layout({ children, home }) {
-  const dispatch = useDispatch();
-
-  const myCategories = [
-    "Latest",
-    "Sports",
-    "Technology",
-    "Spain",
-    "FC Barcelona",
-    "Funny Cats",
-  ];
+  
 
   useEffect(() => {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
@@ -33,10 +17,7 @@ export default function Layout({ children, home }) {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
 
-  const clickHandler = (e) => {
-    const category = e.target.textContent;
-    dispatch(updateCategory(category));
-  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -54,29 +35,9 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        <div className={styles["header-avatar"]}>
-          <Avatar
-            appearance="circle"
-            src="/profile.jpg"
-            size="large"
-            name="Daniel Ramirez"
-          />
-          <div className={styles["page-header-cont"]}>
-            <PageHeader>The News</PageHeader>
-          </div>
-        </div>
+      {/* //nav Bar here */}
 
-        <nav>
-          <DropdownMenu trigger="Menu">
-            <DropdownItemGroup>
-              {myCategories.map((cat) => (
-                <DropdownItem onClick={clickHandler}>{cat}</DropdownItem>
-              ))}
-            </DropdownItemGroup>
-          </DropdownMenu>
-        </nav>
-      </header>
+      <NavBar/>
       <main>{children}</main>
 
       <footer className={styles.backToHome}>
