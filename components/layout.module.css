@@ -1,28 +1,30 @@
 .container {
-    max-width: 36rem;
-    padding: 0 1rem;
-    margin: 0 auto 6rem;
-  }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: 0 auto 6rem;
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
 
-  .header-avatar{
-    display: flex;
-    align-items: center;
-  }
-  
-  .backToHome {
-    margin: 3rem 0 0;
-  }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .page-header-cont{
-margin-left: 0.5rem;
-  }
+.header-avatar {
+  display: flex;
+  align-items: center;
+}
 
-  .main{
-    position: relative;
-  }
+.backToHome {
+  margin: 3rem 0 0;
+}
+
+.page-header-cont {
+  margin-left: 0.5rem;
+}
+
+.main {
+  position: relative;
+}
