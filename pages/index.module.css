@@ -1,12 +1,37 @@
-.title-big{
-    font-size: 5rem;
+.title-big {
+    font-size: 4.5rem;
     opacity: 0.9;
+    margin: auto;
 }
 
 .header {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     flex-direction: column;
-    margin: 20px 0;
+    margin-bottom: 10px;
     color: #172B4D;
+}
+
+
+.button-back-up {
+    position: fixed;
+    z-index: 99;
+    top: 93vh;
+    right: 50vw;
+    transform: translateX(50%);
+    display: block;
+    transition: opacity 1s ease-in-out;
+    
+}
+
+.hide{
+    visibility: hidden;
+    opacity: 0;
+
+}
+
+.active{
+    visibility: visible;
+    opacity: 1;
 }

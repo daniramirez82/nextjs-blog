@@ -1,14 +1,13 @@
 .container {
     max-width: 36rem;
     padding: 0 1rem;
-    margin: 1rem auto 6rem;
+    margin: 0 auto 6rem;
   }
   
   .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
   }
 
   .header-avatar{
@@ -22,4 +21,8 @@
 
   .page-header-cont{
 margin-left: 0.5rem;
+  }
+
+  .main{
+    position: relative;
   }

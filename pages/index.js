@@ -9,13 +9,7 @@ import MainCard from '../components/cards/MainCard';
 import { useEffect, useState } from 'react';
 import { getNews } from '../lib/api';
 import { useSelector } from 'react-redux';
-
-// this is the principal component at the beggining we are exported a head componen for change the name 
-// of the page and the fav icon of each page, then the layout component and the siteTitle variable imported are the blue print for all the pages
-// some utility stailes from the utilStyles CSS file.
-// a helper function getSortedPostsData which will read all the post from the database for render them in the index page
-// Link component to use the route api of Next Js 
-
+import ButtonPrimary from '../components/ui/ButtonPrimary';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -27,28 +21,55 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
+
+
   const [results5, setResults5] = useState([]);
+  const [activeBtn, setActiveBtn] = useState();
+
   const category = useSelector(state => state.category.category);
+
   useEffect(async () => {
+
     const response = await getNews(category);
-    const tempResults = response.slice(0,20);
+    const tempResults = response.slice(0, 20);
+
     console.log(tempResults);
+
     setResults5(tempResults);
-  },[category]);
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => { window.addEventListener('scroll', handleScroll); }
+
+  }, [category]);
+
+  const handleScroll = (e) => {
+
+    if (window.scrollY >= 400) {
+      if (!activeBtn) setActiveBtn(true);
+    } else {
+      if (activeBtn) setActiveBtn(false);
+    }
+  }
+
 
   return (
     <Layout home>
+      <div className={`${styles['button-back-up']} ${activeBtn ? styles.active : styles.hide}`}>
+        <ButtonPrimary>Go Up</ButtonPrimary>
+      </div>
       <Head>
         <title>{siteTitle}</title>
       </Head>
+
       <header className={styles.header}>
-        <hr/>  
+        <hr />
         <h1 className={styles['title-big']}>THE NEWS</h1>
-        <hr/>
+        <hr />
       </header>
       <p>{category}</p>
       <ul>
-      {results5 && results5.map(item => <li id={item.title}><MainCard data={item} /></li>)}
+        {results5 && results5.map(item => <li id={item.title}><MainCard data={item} /></li>)}
       </ul>
 
       <section className="underline">
