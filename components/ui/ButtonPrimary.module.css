@@ -1,23 +1,19 @@
-
-
 .button-back-up {
-    position: fixed;
-    z-index: 99;
-    top: 93vh;
-    right: 50vw;
-    transform: translateX(50%);
-    display: block;
-    transition: opacity 1s ease-in-out;
-    
+  position: fixed;
+  z-index: 99;
+  top: calc(var(--vh, 1vh) * 93);
+  right: 50vw;
+  transform: translateX(50%);
+  display: block;
+  transition: opacity 1s ease-in-out;
 }
 
-.hide{
-    visibility: hidden;
-    opacity: 0;
-
+.hide {
+  visibility: hidden;
+  opacity: 0;
 }
 
-.active{
-    visibility: visible;
-    opacity: 1;
+.active {
+  visibility: visible;
+  opacity: 1;
 }
