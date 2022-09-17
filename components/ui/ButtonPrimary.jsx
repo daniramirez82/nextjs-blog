@@ -1,7 +1,49 @@
-import Button from '@atlaskit/button';
+import Button from "@atlaskit/button";
+import { useState, useEffect } from "react";
+import styles from "./ButtonPrimary.module.css";
 
-const ButtonPrimary = ({children}) => {
-  return <Button appearance="primary">{children}</Button>;
+const ButtonPrimary = ({ children }) => {
+  const [activeBtn, setActiveBtn] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.addEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = (e) => {
+    console.log("--HANDLE SCROLL---", window.scrollY);
+    if (window.scrollY >= 400) {
+      if (!activeBtn) {
+        console.log(" -- TRUE -- activation");
+        setActiveBtn(true);
+      }
+    } else {
+      console.log("----FALSE ACTIVATION ----");
+      setActiveBtn(false);
+    }
+  };
+
+  const goUp = () => {
+    console.log("ran GOUPPPPP");
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  };
+
+  return (
+    <div
+      className={`${styles["button-back-up"]} ${
+        activeBtn ? styles.active : styles.hide
+      }`}
+    >
+      <Button appearance="primary" onClick={goUp}>
+        {children}
+      </Button>
+      ;
+    </div>
+  );
 };
 
 export default ButtonPrimary;

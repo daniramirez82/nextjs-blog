@@ -24,7 +24,6 @@ export default function Home({ allPostsData }) {
 
 
   const [results5, setResults5] = useState([]);
-  const [activeBtn, setActiveBtn] = useState();
 
   const category = useSelector(state => state.category.category);
 
@@ -37,27 +36,17 @@ export default function Home({ allPostsData }) {
 
     setResults5(tempResults);
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => { window.addEventListener('scroll', handleScroll); }
+    
 
   }, [category]);
 
-  const handleScroll = (e) => {
-
-    if (window.scrollY >= 400) {
-      if (!activeBtn) setActiveBtn(true);
-    } else {
-      if (activeBtn) setActiveBtn(false);
-    }
-  }
+ 
 
 
   return (
     <Layout home>
-      <div className={`${styles['button-back-up']} ${activeBtn ? styles.active : styles.hide}`}>
         <ButtonPrimary>Go Up</ButtonPrimary>
-      </div>
+      
       <Head>
         <title>{siteTitle}</title>
       </Head>
