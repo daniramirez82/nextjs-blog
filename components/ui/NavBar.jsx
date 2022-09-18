@@ -38,7 +38,7 @@ const NavBar = () => {
   });
 
   const handleScroll = (e) => {
-    if (window.scrollY <= 200) {
+    if (window.scrollY <= 222200) {
       if (!isShown) {
         setIsShown(true);
       }
@@ -53,8 +53,8 @@ const NavBar = () => {
   };
 
   return (
-    <motion.div animate={isShown ? "show" : "hidden"} variants={variants} className='fixed'>
-      <header className={styles.header}>
+    <motion.div animate={isShown ? "show" : "hidden"} variants={variants} className={styles['header-cont']}>
+      <header className={`${styles.header}`}>
         <div className={styles["header-avatar"]}>
           <Avatar
             appearance="circle"
@@ -67,7 +67,7 @@ const NavBar = () => {
           </div>
         </div>
 
-        <nav>
+        <nav className={styles.nav}>
           <DropdownMenu trigger="Menu">
             <DropdownItemGroup>
               {myCategories.map((cat) => (
