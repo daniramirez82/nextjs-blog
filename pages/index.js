@@ -7,7 +7,7 @@ import Date from '../components/date';
 import styles from './index.module.css';
 import MainCard from '../components/cards/MainCard';
 import { useEffect, useState } from 'react';
-import { getNews } from '../lib/api';
+import { getFromNYT, getNews } from '../lib/api';
 import { useSelector } from 'react-redux';
 import ButtonPrimary from '../components/ui/ButtonPrimary';
 
@@ -32,9 +32,13 @@ export default function Home({ allPostsData }) {
     const response = await getNews(category);
     const tempResults = response.slice(0, 20);
 
+    const fromNYT = await getFromNYT('automobiles');
+
+    console.log(fromNYT);
+
     console.log(tempResults);
 
-    setResults5(tempResults);
+    setResults5(fromNYT);
 
     
 

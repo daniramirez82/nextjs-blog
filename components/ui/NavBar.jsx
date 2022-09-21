@@ -25,6 +25,8 @@ const NavBar = () => {
   const clickHandler = (e) => {
     const category = e.target.textContent;
     dispatch(updateCategory(category));
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   };
 
   return (

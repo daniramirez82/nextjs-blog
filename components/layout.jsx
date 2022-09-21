@@ -4,14 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import NavBar from "./ui/NavBar";
 export const siteTitle = "Dj's blog";
-const { motion } = require("framer-motion");
 
 const name = "Daniel Dj";
-
-const variants = {
-  show: { opacity: 1, y: 0 },
-  hidden: { opacity: 0, y: "-100%" },
-};
 
 export default function Layout({ children, home }) {
   const [isShown, setIsShown] = useState(true);
@@ -54,9 +48,8 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <motion.div animate={isShown ? "show" : "hidden"} variants={variants}>
         <NavBar />
-      </motion.div>
+     
       <main>{children}</main>
 
       <footer className={styles.backToHome}>
