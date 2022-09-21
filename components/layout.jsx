@@ -1,22 +1,41 @@
 import Head from "next/head";
 import styles from "./layout.module.css";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "./ui/NavBar";
+export const siteTitle = "Dj's blog";
+const { motion } = require("framer-motion");
 
 const name = "Daniel Dj";
-export const siteTitle = "Dj's blog";
+
+const variants = {
+  show: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: "-100%" },
+};
 
 export default function Layout({ children, home }) {
-  
+  const [isShown, setIsShown] = useState(true);
 
   useEffect(() => {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     let vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.addEventListener("scroll", handleScroll);
+    };
   });
 
+  const handleScroll = ()=>{
+    if(window.scrollY > 300){
+      setIsShown(false);
+    }else {
+      setIsShown(true);
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -35,8 +54,9 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-
-      <NavBar/>
+      <motion.div animate={isShown ? "show" : "hidden"} variants={variants}>
+        <NavBar />
+      </motion.div>
       <main>{children}</main>
 
       <footer className={styles.backToHome}>

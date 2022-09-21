@@ -7,9 +7,7 @@ import DropdownMenu, {
 import PageHeader from "@atlaskit/page-header";
 import Avatar from "@atlaskit/avatar";
 import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
 
-const { motion } = require("framer-motion");
 
 const myCategories = [
   "Latest",
@@ -20,32 +18,9 @@ const myCategories = [
   "Funny Cats",
 ];
 
-const variants = {
-  show: { opacity: 1, y: 0 },
-  hidden: { opacity: 0, y: "100%" },
-};
-
 const NavBar = () => {
+  console.log("nav cargado");
   const dispatch = useDispatch();
-  const [isShown, setIsShown] = useState(true);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.addEventListener("scroll", handleScroll);
-    };
-  });
-
-  const handleScroll = (e) => {
-    if (window.scrollY <= 222200) {
-      if (!isShown) {
-        setIsShown(true);
-      }
-    } else {
-      setIsShown(false);
-    }
-  };
 
   const clickHandler = (e) => {
     const category = e.target.textContent;
@@ -53,7 +28,7 @@ const NavBar = () => {
   };
 
   return (
-    <motion.div animate={isShown ? "show" : "hidden"} variants={variants} className={styles['header-cont']}>
+    <div className={styles["header-cont"]}>
       <header className={`${styles.header}`}>
         <div className={styles["header-avatar"]}>
           <Avatar
@@ -77,7 +52,7 @@ const NavBar = () => {
           </DropdownMenu>
         </nav>
       </header>
-    </motion.div>
+    </div>
   );
 };
 
