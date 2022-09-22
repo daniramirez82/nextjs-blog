@@ -10,6 +10,7 @@ const MainCard = ({ data }) => {
         <div className={styles.wrapper}>
             <div className={styles.image}>
                { image ?  <img src={image} alt={title}/> : <img src={"/default.jpg"} alt={title}/> }
+            <Image src={image} width={1600} height={1600} layout={'responsive'}/>
             </div>
             <div className={styles.content}>
                 <div className={styles.date}>{date}</div>
