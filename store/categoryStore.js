@@ -1,6 +1,6 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit'
 
-const initialState = {category: 'latest'};
+const initialState = {category: 'Latest'};
 
 const categorySlice = createSlice({
     name: 'category',

@@ -32,7 +32,7 @@ export default function Layout({ children, home }) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} container`}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta

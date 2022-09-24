@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Date from '../components/date';
 import styles from './index.module.css';
 import MainCard from '../components/cards/MainCard';
+import SecondaryCard from '../components/cards/SecondaryCard';
 import { useEffect, useState } from 'react';
 import { getFromNYT, getNews } from '../lib/api';
 import { useSelector } from 'react-redux';
@@ -22,35 +23,32 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
 
-
-  const [results5, setResults5] = useState([]);
+  const [mainArticle, setMainArticle] = useState([]);
+  const [results3, setResults3] = useState([]);
 
   const category = useSelector(state => state.category.category);
 
   useEffect(async () => {
 
-    const response = await getNews(category);
-    const tempResults = response.slice(0, 20);
-
-    const fromNYT = await getFromNYT('automobiles');
+    const fromNYT = await getFromNYT('movies');
 
     console.log(fromNYT);
 
-    console.log(tempResults);
+    setMainArticle(fromNYT[0]);
 
-    setResults5(fromNYT);
+    setResults3(fromNYT.slice(1, 4));
 
-    
+
 
   }, [category]);
 
- 
+
 
 
   return (
     <Layout home>
-        <ButtonPrimary>Go Up</ButtonPrimary>
-      
+      <ButtonPrimary>Go Up</ButtonPrimary>
+
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -60,10 +58,20 @@ export default function Home({ allPostsData }) {
         <h1 className={styles['title-big']}>THE NEWS</h1>
         <hr />
       </header>
-      <p>{category}</p>
-      <ul>
-        {results5 && results5.map(item => <li id={item.title}><MainCard data={item} /></li>)}
-      </ul>
+
+      <p className='text-xl'>{category}</p>
+
+      <section className='flex flex-col lg:flex-row'>
+
+        <div className={"lg:basis-1/3"}>
+          {mainArticle && <MainCard data={mainArticle} />}
+        </div>
+
+        <ul className='lg:basis-2/3'>
+          {results3 && results3.map(item => <li id={item.title}><SecondaryCard data={item} /></li>)}
+        </ul>
+
+      </section>
 
       <section className="underline">
         <p>[I'm a web developer student!!!]</p>

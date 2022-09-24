@@ -10,10 +10,8 @@
 /* make a break point for .wrapper after 765px flex direction will be row */
 
 
-.content{
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
+.image{
+    position: block;
 }
 
 .date{
@@ -21,3 +19,6 @@
     color: rgba(0, 0, 0, 0.548);
 }
 
+.title{
+    opacity: 0.95;
+}
