@@ -30,7 +30,7 @@ export default function Home({ allPostsData }) {
 
   useEffect(async () => {
 
-    const fromNYT = await getFromNYT('movies');
+    const fromNYT = await getFromNYT('home');
 
     console.log(fromNYT);
 
@@ -59,16 +59,16 @@ export default function Home({ allPostsData }) {
         <hr />
       </header>
 
-      <p className='text-xl'>{category}</p>
+      <p className='text-xl text-slate-400 font-bold '>{category.toUpperCase()}</p>
 
       <section className='flex flex-col lg:flex-row'>
 
-        <div className={"lg:basis-1/3"}>
+        <div className={"lg:basis-1/2 xl:basis-2/3"}>
           {mainArticle && <MainCard data={mainArticle} />}
         </div>
 
-        <ul className='lg:basis-2/3'>
-          {results3 && results3.map(item => <li id={item.title}><SecondaryCard data={item} /></li>)}
+        <ul className='lg:basis-2/3 lg:ml-4 flex flex-col justify-between'>
+          {results3 && results3.map(item => <li id={item.title} className="flex-grow mb-4"><SecondaryCard data={item} /></li>)}
         </ul>
 
       </section>

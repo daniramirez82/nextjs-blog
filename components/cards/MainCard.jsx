@@ -5,10 +5,12 @@ import Link from "next/link";
 const MainCard = ({ data }) => {
   const { description, image, url, date, title } = data;
 
-  return (
-    <div className={`${styles.wrapper} flex flex-col sm:flex-row md:max-h-94 lg:flex-col`}>
+  const tempDate = new Date(date);
 
-      <div className={`sm:basis-1/2 md:basis-1/3`}>
+  return (
+    <div className={`${styles.wrapper} flex flex-col sm:flex-row md:max-h-94 lg:flex-col mb-4`}>
+
+      <div className={`sm:basis-1/2 md:basis-1/2`}>
 
         <Image
           src={image}
@@ -26,8 +28,8 @@ const MainCard = ({ data }) => {
 
       </div>
 
-      <div className={`${styles.content} sm:basis-1/2`}>
-        <div className={styles.date}>{date}</div>
+      <div className={`${styles.content} sm:basis-1/2 md:basis-full`}>
+        <div className={styles.date}>{tempDate.toLocaleDateString()}</div>
         <Link href={`${url}`}>
           <a>
             <h1 className={" pb-4 text-lg md:text-2xl text-slate-900 font-bold antialiased tracking-tight"}>{title}</h1>
