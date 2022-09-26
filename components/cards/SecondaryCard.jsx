@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import styles from "./SecondaryCard.module.css";
 import Link from "next/link";
 
@@ -11,12 +11,10 @@ const SecondaryCard = ({ data }) => {
             <div className={`${styles.image} p-4 basis-1/2`}>
 
                 <Image
-                    className="rounded"
+                    className="rounded w-full h-full object-cover"
                     src={image}
                     width={120}
                     height={90}
-                    layout={'responsive'}
-                    objectFit={'cover'}
                     sizes="(max-width: 768px) 50vw,
                     33vw"
                 />

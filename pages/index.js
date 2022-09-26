@@ -30,7 +30,7 @@ export default function Home({ allPostsData }) {
 
   useEffect(async () => {
 
-    const fromNYT = await getFromNYT('home');
+    const fromNYT = await getFromNYT('sports');
 
     console.log(fromNYT);
 
@@ -67,8 +67,8 @@ export default function Home({ allPostsData }) {
           {mainArticle && <MainCard data={mainArticle} />}
         </div>
 
-        <ul className='lg:basis-2/3 lg:ml-4 flex flex-col justify-between'>
-          {results3 && results3.map(item => <li id={item.title} className="flex-grow mb-4"><SecondaryCard data={item} /></li>)}
+        <ul className='lg:basis-2/3 lg:ml-4 flex flex-col justify-between '>
+          {results3 && results3.map(item => <li id={item.title} className="flex-grow mb-4 lg:last:mb-0"><SecondaryCard data={item} /></li>)}
         </ul>
 
       </section>

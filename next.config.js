@@ -6,6 +6,7 @@ const nextConfig = {
   images: {
     domains: ["static01.nyt.com"],
   },
+  experimental: { images: { allowFutureImage: true } },
 }
 
 module.exports = nextConfig
