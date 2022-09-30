@@ -23,16 +23,16 @@ export default function Layout({ children, home }) {
     };
   });
 
-  const handleScroll = ()=>{
-    if(window.scrollY > 300){
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
       setIsShown(false);
-    }else {
+    } else {
       setIsShown(true);
     }
   }
 
   return (
-    <div className={`${styles.container} container`}>
+    <div className={`${styles.container} container relative`}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -48,8 +48,8 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-        <NavBar />
-     
+      <NavBar />
+
       <main>{children}</main>
 
       <footer className={styles.backToHome}>

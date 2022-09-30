@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { getFromNYT, getNews } from '../lib/api';
 import { useSelector } from 'react-redux';
 import ButtonPrimary from '../components/ui/ButtonPrimary';
+import SecondArea from '../components/areas/SecondArea';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -24,19 +25,21 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
 
   const [mainArticle, setMainArticle] = useState([]);
-  const [results3, setResults3] = useState([]);
+  const [results3Home, setResults3Home] = useState([]);
+  const [sportResults, setSportResults] = useState([]);
 
   const category = useSelector(state => state.category.category);
 
   useEffect(async () => {
 
-    const fromNYT = await getFromNYT('sports');
+    const homeNews = await getFromNYT('home');
+    const sportNews = await getFromNYT('sports');
 
-    console.log(fromNYT);
+    setMainArticle(homeNews[0]);
 
-    setMainArticle(fromNYT[0]);
+    setResults3Home(homeNews.slice(1, 4));
 
-    setResults3(fromNYT.slice(1, 4));
+    setSportResults(sportNews.slice(0,4));
 
 
 
@@ -68,9 +71,13 @@ export default function Home({ allPostsData }) {
         </div>
 
         <ul className='lg:basis-2/3 lg:ml-4 flex flex-col justify-between '>
-          {results3 && results3.map(item => <li id={item.title} className="flex-grow mb-4 lg:last:mb-0"><SecondaryCard data={item} /></li>)}
+          {results3Home && results3Home.map(item => <li key={item.title} className="flex-grow mb-4 lg:last:mb-0"><SecondaryCard data={item} /></li>)}
         </ul>
 
+      </section>
+
+      <section>
+        {sportResults && <SecondArea newsArray = {sportResults} />}
       </section>
 
       <section className="underline">

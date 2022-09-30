@@ -30,7 +30,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className={styles["header-cont"]}>
+    <div className={`fixed top-0 container -ml-4 ${styles['header-cont']}`}>
       <header className={`${styles.header}`}>
         <div className={styles["header-avatar"]}>
           <Avatar
@@ -44,11 +44,11 @@ const NavBar = () => {
           </div>
         </div>
 
-        <nav className={styles.nav}>
+        <nav className={`pr-4`}>
           <DropdownMenu trigger="Menu">
             <DropdownItemGroup>
-              {myCategories.map((cat) => (
-                <DropdownItem onClick={clickHandler}>{cat}</DropdownItem>
+              {myCategories.map((cat,index) => (
+                <DropdownItem key={index} onClick={clickHandler}>{cat}</DropdownItem>
               ))}
             </DropdownItemGroup>
           </DropdownMenu>

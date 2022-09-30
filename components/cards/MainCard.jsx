@@ -11,15 +11,17 @@ const css = {
 const MainCard = ({ data }) => {
   const { description, image, url, date, title } = data;
 
+  console.log(image);
+
   const tempDate = new Date(date);
 
   return (
     <div className={`${styles.wrapper} flex flex-col sm:flex-row md:max-h-94 lg:flex-col mb-4 lg:h-full`}>
 
       <div className={`sm:basis-1/2 md:basis-1/2 lg:basis-4/5`}>
-
         <Image
           src={image}
+          priority={true}
           style={css}
           width={400}
           height={800}
@@ -29,7 +31,6 @@ const MainCard = ({ data }) => {
                 (max-width: 768px) 50vw,
                 33vw"
         />
-
       </div>
 
       <div className={`${styles.content} sm:basis-1/2 md:basis-full lg:basis-auto`}>
