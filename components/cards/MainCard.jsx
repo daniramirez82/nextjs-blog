@@ -11,8 +11,6 @@ const css = {
 const MainCard = ({ data }) => {
   const { description, image, url, date, title } = data;
 
-  console.log(image);
-
   const tempDate = new Date(date);
 
   return (

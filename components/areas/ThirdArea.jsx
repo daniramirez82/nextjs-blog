@@ -1,14 +1,16 @@
-import HorizontalCard from "../cards/HorizontalCard";
+import HorizontalCenteredCard from "../cards/HorizontalCenteredCard copy";
+
 const ThirdArea = ({ news }) => {
   return (
-    <div className="container flex">
+    <div className="container grid grids-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
       {news.map((item) => {
         return (
-          <div key={item.title} className="basis-full sm:basis-1/2 md:basis-1/3">
-            <HorizontalCard data={item} />
+          <div key={item.title} className="">
+            <HorizontalCenteredCard data={item} />
           </div>
         );
       })}
     </div>
   );
 };
+export default ThirdArea;

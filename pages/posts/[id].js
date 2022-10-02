@@ -32,7 +32,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
-    console.log(postData);
     const { id, content, data, contentHtml } = postData;
     const newObj = { id, content, data, contentHtml };
     return {

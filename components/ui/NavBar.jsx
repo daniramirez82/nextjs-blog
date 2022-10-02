@@ -19,7 +19,6 @@ const myCategories = [
 ];
 
 const NavBar = () => {
-  console.log("nav cargado");
   const dispatch = useDispatch();
 
   const clickHandler = (e) => {
@@ -47,8 +46,8 @@ const NavBar = () => {
         <nav className={`pr-4`}>
           <DropdownMenu trigger="Menu">
             <DropdownItemGroup>
-              {myCategories.map((cat,index) => (
-                <DropdownItem key={index} onClick={clickHandler}>{cat}</DropdownItem>
+              {myCategories.map((cat) => (
+                <DropdownItem key={cat} onClick={clickHandler}>{cat}</DropdownItem>
               ))}
             </DropdownItemGroup>
           </DropdownMenu>

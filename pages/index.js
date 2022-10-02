@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 import ButtonPrimary from '../components/ui/ButtonPrimary';
 import SecondArea from '../components/areas/SecondArea';
 import TwoColMarketing from '../components/areas/TwoColMarketing';
+import ThirdArea from '../components/areas/ThirdArea';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -28,6 +29,7 @@ export default function Home({ allPostsData }) {
   const [mainArticle, setMainArticle] = useState([]);
   const [results3Home, setResults3Home] = useState([]);
   const [sportResults, setSportResults] = useState([]);
+  const [foodResults, setFoodResults] = useState([]);
 
   const category = useSelector(state => state.category.category);
 
@@ -35,12 +37,15 @@ export default function Home({ allPostsData }) {
 
     const homeNews = await getFromNYT('home');
     const sportNews = await getFromNYT('sports');
+    const foodNews = await getFromNYT('food');
 
     setMainArticle(homeNews[0]);
 
     setResults3Home(homeNews.slice(1, 4));
 
-    setSportResults(sportNews.slice(0,4));
+    setSportResults(sportNews.slice(0, 4));
+
+    setFoodResults(foodNews.slice(0, 6));
 
 
 
@@ -81,6 +86,10 @@ export default function Home({ allPostsData }) {
         {sportResults && <SecondArea newsArray = {sportResults} />}
       </section>
       <TwoColMarketing/>
+
+      <section>
+        <ThirdArea news={foodResults}/>
+      </section>
 
       <section className="underline">
         <p>[I'm a web developer student!!!]</p>
