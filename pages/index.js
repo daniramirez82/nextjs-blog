@@ -12,6 +12,7 @@ import { getFromNYT, getNews } from '../lib/api';
 import { useSelector } from 'react-redux';
 import ButtonPrimary from '../components/ui/ButtonPrimary';
 import SecondArea from '../components/areas/SecondArea';
+import TwoColMarketing from '../components/areas/TwoColMarketing';
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -79,6 +80,7 @@ export default function Home({ allPostsData }) {
       <section>
         {sportResults && <SecondArea newsArray = {sportResults} />}
       </section>
+      <TwoColMarketing/>
 
       <section className="underline">
         <p>[I'm a web developer student!!!]</p>
