@@ -15,8 +15,11 @@ import SecondArea from '../components/areas/SecondArea';
 import TwoColMarketing from '../components/areas/TwoColMarketing';
 import ThirdArea from '../components/areas/ThirdArea';
 import SectionTitle from '../components/ui/SectionTitle';
-import FourthArea from '../components/areas/FourthArea';
+const FourthArea = dynamic(() => import('../components/areas/FourthArea'));
 import useOnScreen from '../lib/useOnScreen';
+import dynamic from 'next/dynamic';
+import MainCardLoading from '../components/cards/MainCardLoading';
+import SecondaryCardLoading from '../components/cards/SecondaryCardLoading';
 
 
 export async function getStaticProps() {
@@ -30,8 +33,8 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
 
-  const [mainArticle, setMainArticle] = useState([]);
-  const [results3Home, setResults3Home] = useState([]);
+  const [mainArticle, setMainArticle] = useState(null);
+  const [results3Home, setResults3Home] = useState(null);
   const [sportResults, setSportResults] = useState([]);
   const [foodResults, setFoodResults] = useState([]);
   const [isFourthARef, setisFourthAREf] = useState(false);
@@ -61,6 +64,8 @@ export default function Home({ allPostsData }) {
 
     setFoodResults(foodNews.slice(0, 6));
 
+    console.log(results3Home);
+
   }, [category]);
 
   return (
@@ -81,11 +86,12 @@ export default function Home({ allPostsData }) {
       <section className='flex flex-col lg:flex-row'>
 
         <div className={"lg:basis-1/2 xl:basis-2/3"}>
-          {mainArticle && <MainCard data={mainArticle} />}
+          {mainArticle ? <MainCard data={mainArticle} /> : <MainCardLoading />}
         </div>
 
         <ul className='lg:basis-2/3 lg:ml-4 flex flex-col justify-between '>
-          {results3Home && results3Home.map(item => <li key={item.title} className="flex-grow mb-4 lg:last:mb-0"><SecondaryCard data={item} /></li>)}
+          {results3Home ? results3Home.map(item => <li key={item.title} className="flex-grow mb-4 lg:last:mb-0"><SecondaryCard data={item} /></li>)
+            : [1, 2, 3].map((item) => <li key={item} className="flex-grow mb-4 lg:last:mb-0"><SecondaryCardLoading /></li>)}
         </ul>
 
       </section>
@@ -103,11 +109,7 @@ export default function Home({ allPostsData }) {
       </section>
       <SectionTitle category={"Movies"} ref={fouthArea} />
 
-      {fouthAreaRefVal && (<section >
-        <FourthArea />
-      </section>)}
-
-
+      {fouthAreaRefVal && (<section > <FourthArea /> </section>)}
 
       <section className="underline">
         <p>[I'm a web developer student!!!]</p>
