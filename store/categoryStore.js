@@ -12,11 +12,12 @@ const categorySlice = createSlice({
         }
     }
 });
+export const {updateCategory} = categorySlice.actions;
+
 const store = configureStore({
     reducer: {
         category: categorySlice.reducer
     }
 });
-export const {updateCategory} = categorySlice.actions;
 
 export default store;

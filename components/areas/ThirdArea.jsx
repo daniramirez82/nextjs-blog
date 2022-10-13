@@ -1,4 +1,4 @@
-import HorizontalCenteredCard from "../cards/HorizontalCenteredCard copy";
+import HorizontalCenteredCard from "../cards/HorizontalCenteredCard";
 
 const ThirdArea = ({ news }) => {
   return (

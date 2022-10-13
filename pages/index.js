@@ -7,13 +7,17 @@ import Date from '../components/date';
 import styles from './index.module.css';
 import MainCard from '../components/cards/MainCard';
 import SecondaryCard from '../components/cards/SecondaryCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getFromNYT, getNews } from '../lib/api';
 import { useSelector } from 'react-redux';
 import ButtonPrimary from '../components/ui/ButtonPrimary';
 import SecondArea from '../components/areas/SecondArea';
 import TwoColMarketing from '../components/areas/TwoColMarketing';
 import ThirdArea from '../components/areas/ThirdArea';
+import SectionTitle from '../components/ui/SectionTitle';
+import FourthArea from '../components/areas/FourthArea';
+import useOnScreen from '../lib/useOnScreen';
+
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -30,10 +34,20 @@ export default function Home({ allPostsData }) {
   const [results3Home, setResults3Home] = useState([]);
   const [sportResults, setSportResults] = useState([]);
   const [foodResults, setFoodResults] = useState([]);
+  const [isFourthARef, setisFourthAREf] = useState(false);
+  const fouthArea = useRef(null);
+  const fouthAreaRefVal = useOnScreen(fouthArea);
+
+
+
 
   const category = useSelector(state => state.category.category);
 
   useEffect(async () => {
+
+    if (!isFourthARef) {
+      setisFourthAREf(fouthAreaRefVal)
+    }
 
     const homeNews = await getFromNYT('home');
     const sportNews = await getFromNYT('sports');
@@ -47,12 +61,7 @@ export default function Home({ allPostsData }) {
 
     setFoodResults(foodNews.slice(0, 6));
 
-
-
   }, [category]);
-
-
-
 
   return (
     <Layout home>
@@ -68,8 +77,7 @@ export default function Home({ allPostsData }) {
         <hr />
       </header>
 
-      <p className='text-xl text-slate-400 font-bold '>{category.toUpperCase()}</p>
-
+      <SectionTitle category={category} />
       <section className='flex flex-col lg:flex-row'>
 
         <div className={"lg:basis-1/2 xl:basis-2/3"}>
@@ -81,15 +89,25 @@ export default function Home({ allPostsData }) {
         </ul>
 
       </section>
+      <SectionTitle category={"Sports"} />
 
       <section>
-        {sportResults && <SecondArea newsArray = {sportResults} />}
+        {sportResults && <SecondArea newsArray={sportResults} />}
       </section>
-      <TwoColMarketing/>
+      <TwoColMarketing />
+      {fouthAreaRefVal ? <p>Se ve</p> : <p>No se ve</p>}
+      <SectionTitle category={"Food"} />
 
       <section>
-        <ThirdArea news={foodResults}/>
+        <ThirdArea news={foodResults} />
       </section>
+      <SectionTitle category={"Movies"} ref={fouthArea} />
+
+      {fouthAreaRefVal && (<section >
+        <FourthArea />
+      </section>)}
+
+
 
       <section className="underline">
         <p>[I'm a web developer student!!!]</p>

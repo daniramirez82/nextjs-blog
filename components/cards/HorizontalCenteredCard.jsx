@@ -1,14 +1,14 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
 
-const HorizontalCard = ({ data }) => {
+const HorizontalCenteredCard = ({ data }) => {
     const { description, image, url, date, title } = data;
 
     return (
         <Link href={`${url}`}>
-            <a className="wrapper flex flex-col p-4">
+            <a className="wrapper flex flex-col p-4 bg-slate-100 rounded  min-h-full">
                 <Image
-                    className='rounded-t'
+                    className='rounded-t min-h-full min-w-full object-cover'
                     src={image}
                     width={400}
                     height={800}
@@ -17,8 +17,8 @@ const HorizontalCard = ({ data }) => {
                 <h4 className="text-sm md:text-base pb-2 font-semibold text-slate-900">{title}</h4>
                 <p className="text-sm md:text-base text-slate-500 line-clamp-4">{description}</p>
             </a>
-    </Link>
+        </Link>
     )
 }
 
-export default HorizontalCard;
+export default HorizontalCenteredCard;
