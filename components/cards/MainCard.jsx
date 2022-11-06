@@ -37,7 +37,7 @@ const MainCard = ({ data }) => {
             <h1 className={" pb-4 text-lg md:text-2xl text-slate-900 font-bold antialiased tracking-tight"}>{title}</h1>
           </a>
         </Link>
-        <div className={styles.intro}>
+        <div>
           <p className="text-slate-600 font-medium md:font-semibold">{description}</p>
         </div>
       </div>

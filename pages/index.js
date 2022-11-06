@@ -34,39 +34,36 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
 
   const [mainArticle, setMainArticle] = useState(null);
-  const [results3Home, setResults3Home] = useState(null);
-  const [sportResults, setSportResults] = useState([]);
+  const [results3Home, setResults3Home] = useState(undefined);
   const [foodResults, setFoodResults] = useState([]);
-  const [isFourthARef, setisFourthAREf] = useState(false);
-  const fouthArea = useRef(null);
+  const [showFourthArea, setShowFourtArea] = useState();
+
+  const fouthArea = useRef();
   const fouthAreaRefVal = useOnScreen(fouthArea);
-
-
-
 
   const category = useSelector(state => state.category.category);
 
   useEffect(async () => {
 
-    if (!isFourthARef) {
-      setisFourthAREf(fouthAreaRefVal)
-    }
-
     const homeNews = await getFromNYT('home');
-    const sportNews = await getFromNYT('sports');
     const foodNews = await getFromNYT('food');
 
     setMainArticle(homeNews[0]);
 
     setResults3Home(homeNews.slice(1, 4));
 
-    setSportResults(sportNews.slice(0, 4));
 
     setFoodResults(foodNews.slice(0, 6));
 
-    console.log(results3Home);
-
   }, [category]);
+
+  useEffect(()=>{
+
+    if(!showFourthArea){
+      setShowFourtArea(fouthAreaRefVal);
+    }
+
+  },[fouthAreaRefVal]);
 
   return (
     <Layout home>
@@ -98,18 +95,21 @@ export default function Home({ allPostsData }) {
       <SectionTitle category={"Sports"} />
 
       <section>
-        {sportResults && <SecondArea newsArray={sportResults} />}
+        <SecondArea />
       </section>
       <TwoColMarketing />
-      {fouthAreaRefVal ? <p>Se ve</p> : <p>No se ve</p>}
+      {showFourthArea ? <p>Se ve</p> : <p>no se ve</p>}
       <SectionTitle category={"Food"} />
 
       <section>
         <ThirdArea news={foodResults} />
       </section>
-      <SectionTitle category={"Movies"} ref={fouthArea} />
+      <div ref={fouthArea}>
+        <SectionTitle category={"Movies"} />
 
-      {fouthAreaRefVal && (<section > <FourthArea /> </section>)}
+      </div>
+
+      {showFourthArea && (<section > <FourthArea /> </section>)}
 
       <section className="underline">
         <p>[I'm a web developer student!!!]</p>
