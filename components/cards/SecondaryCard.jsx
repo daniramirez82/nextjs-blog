@@ -3,7 +3,6 @@ import Link from "next/link";
 
 const SecondaryCard = ({ data }) => {
     const { description, image, url, date, title } = data;
-    const temDate = new Date(date);
 
     return (
         <div className={`bg-white rounded overflow-hidden shadow-sm flex flex-row-reverse sm:flex-row min-h-full`}>
@@ -24,7 +23,7 @@ const SecondaryCard = ({ data }) => {
                     <h4 className={`leading-6 text-lg pb-4 md:text-xl text-slate-800 font-bold antialiased tracking-tight xl:text-2xl line-clamp-2`}>{title}</h4>
                 </Link>
                 <p className="text-slate-900 flex-grow hidden md:block line-clamp-1">{description}</p>
-                <div className="text-sm text-slate-400">{temDate.toLocaleDateString()}</div>
+                <div className="text-sm text-slate-400">{date}</div>
             </div>
         </div>
     );

@@ -53,11 +53,7 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
 
       <footer className={styles.backToHome}>
-        <Link href="/">
-          <button className="bg-indigo-500 rounded-lg p-5 hover:bg-indigo-700">
-            <a>← Back to home</a>
-          </button>
-        </Link>
+      <p>here goes the footer</p>
       </footer>
     </div>
   );

@@ -9,9 +9,13 @@ const FourthArea = () => {
   useEffect(async () => {
     const moviesNews = await getFromNYT('movies');
 
-    setMoviesResults(moviesNews.slice(0, 4));
+    if (moviesNews.status === "ok") {
+      setMoviesResults(moviesNews.response.slice(0, 4));
 
-  },[]);
+    }
+
+
+  }, []);
 
   return (
     <div className="container grid grids-cols-2 md:grid-cols-4 gap-4 mt-4">

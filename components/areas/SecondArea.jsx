@@ -1,15 +1,33 @@
 import HorizontalCard from "../cards/HorizontalCard";
+import { useEffect, useState } from "react";
+import { getFromNYT } from "../../lib/api";
 
-export async function getServerSideProps() {
-    // Fetch data from external API
-    const sportNews = await getFromNYT('sports');
-    const newsArray = sportNews.slice(0, 4);
+//ver luego:
 
-    console.log('noticias deportes', newsArray);
-    return { props: { newsArray } }
-}
+// esto no funciona porque debe ser directo de una pagina
+//pensar hacerlo en el index directo pero de manera modularizada!!!
+//podemos cargar las noticias del main directo desde el index con esta funcion de manera que se cargen desde el servidor
 
-const SecondArea = ({ newsArray }) => {
+// export async function getServerSideProps() {
+//     // Fetch data from external API
+//     const newsArray = sportNews.slice(0, 4);
+
+//     console.log('noticias deportes', newsArray);
+//     return { props: { newsArray } }
+// }
+
+export const SecondArea = () => {
+
+    const [newsArray, setNewsArray] = useState(null);
+
+    useEffect(async () => {
+        const sportNews = await getFromNYT('sports');
+        if (sportNews.status === 'ok') {
+            const sportsNewsSliced = sportNews.response.slice(0, 4);
+            setNewsArray(sportsNewsSliced);
+        }
+    }, []);
+
 
     return (
         <div className="grid grid-cols-2 md:grid-cols-4">
@@ -17,5 +35,3 @@ const SecondArea = ({ newsArray }) => {
         </div>
     )
 }
-
-export default SecondArea;
