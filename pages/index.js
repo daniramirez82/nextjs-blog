@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getFromNYT } from '../lib/api';
 import { useSelector } from 'react-redux';
 import ButtonPrimary from '../components/ui/ButtonPrimary';
-import {SecondArea} from '../components/areas/SecondArea';
+import { SecondArea } from '../components/areas/SecondArea';
 import TwoColMarketing from '../components/areas/TwoColMarketing';
 import ThirdArea from '../components/areas/ThirdArea';
 import SectionTitle from '../components/ui/SectionTitle';
@@ -29,13 +29,13 @@ export default function Home() {
 
   const category = useSelector(state => state.category.category);
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    if(!showFourthArea){
+    if (!showFourthArea) {
       setShowFourtArea(fouthAreaRefVal);
     }
 
-  },[fouthAreaRefVal]);
+  }, [fouthAreaRefVal]);
 
   return (
     <Layout home>
@@ -52,25 +52,21 @@ export default function Home() {
       </header>
 
       <SectionTitle category={category} />
-      <MainArea/>
+      <MainArea />
+
       <SectionTitle category={"Sports"} />
+      <SecondArea />
 
-      <section>
-        <SecondArea />
-      </section>
       <TwoColMarketing />
-      {showFourthArea ? <p>Se ve</p> : <p>no se ve</p>}
-      <SectionTitle category={"Food"} />
 
-      <section>
-        <ThirdArea/>
-      </section>
+      <SectionTitle category={"Food"} />
+      <ThirdArea />
+
       <div ref={fouthArea}>
         <SectionTitle category={"Movies"} />
-
+        {showFourthArea && <FourthArea />}
       </div>
 
-      {showFourthArea && (<section > <FourthArea /> </section>)}
 
     </Layout>
   );

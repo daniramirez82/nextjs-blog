@@ -18,9 +18,9 @@ const SecondaryCard = ({ data }) => {
                 />
 
             </div>
-            <div className={`flex flex-col justify-between p-4 basis-1/2 md:basis-3/5 xl:basis-1/2`}>
+            <div className={`flex flex-col justify-between p-4 basis-1/2 md:basis-[66%]`}>
                 <Link href={`${url}`}>
-                    <h4 className={`leading-6 text-lg pb-4 md:text-xl text-slate-800 font-bold antialiased tracking-tight xl:text-2xl line-clamp-2`}>{title}</h4>
+                    <h4 className={`text-lg max-h-14 pb-4 md:text-xl text-slate-800 font-bold antialiased tracking-tight xl:text-2xl  text-ellipsis overflow-hidden `}>{title}</h4>
                 </Link>
                 <p className="text-slate-900 flex-grow hidden md:block line-clamp-1">{description}</p>
                 <div className="text-sm text-slate-400">{date}</div>
