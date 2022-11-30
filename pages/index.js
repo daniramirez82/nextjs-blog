@@ -17,6 +17,7 @@ const FourthArea = dynamic(() => import('../components/areas/FourthArea'));
 import useOnScreen from '../lib/useOnScreen';
 import dynamic from 'next/dynamic';
 import MainArea from '../components/areas/MainArea';
+import { TechArea } from '../components/areas/TechArea';
 
 
 export default function Home() {
@@ -66,6 +67,9 @@ export default function Home() {
         <SectionTitle category={"Movies"} />
         {showFourthArea && <FourthArea />}
       </div>
+
+      <SectionTitle category={'Technology'}/>
+      <TechArea/>
 
 
     </Layout>

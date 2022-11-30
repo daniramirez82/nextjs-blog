@@ -9,6 +9,7 @@ export const SecondArea = () => {
 
     useEffect(async () => {
         const sportNews = await getFromNYT('sports');
+        console.log(sportNews);
         if (sportNews.status === 'ok') {
             const sportsNewsSliced = sportNews.response.slice(0, 4);
             setNewsArray(sportsNewsSliced);
@@ -18,7 +19,7 @@ export const SecondArea = () => {
 
     return (
         <section>
-            <div className="grid grid-cols-2 md:grid-cols-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {newsArray ? newsArray.map((item) => <li key={item.title} className="list-none"><HorizontalCard data={item} /></li>) :
                     [1, 2, 3, 4].map(i => <h4 key={i}>Loading</h4>)}
             </div>
