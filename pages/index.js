@@ -1,12 +1,7 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
-import Link from 'next/link';
-import Date from '../components/date';
 import styles from './index.module.css';
 import { useEffect, useRef, useState } from 'react';
-import { getFromNYT } from '../lib/api';
 import { useSelector } from 'react-redux';
 import ButtonPrimary from '../components/ui/ButtonPrimary';
 import { SecondArea } from '../components/areas/SecondArea';
@@ -18,6 +13,7 @@ import useOnScreen from '../lib/useOnScreen';
 import dynamic from 'next/dynamic';
 import MainArea from '../components/areas/MainArea';
 import { TechArea } from '../components/areas/TechArea';
+import { TravelArea } from '../components/areas/TravelArea';
 
 
 export default function Home() {
@@ -70,6 +66,9 @@ export default function Home() {
 
       <SectionTitle category={'Technology'}/>
       <TechArea/>
+
+      <SectionTitle category={'Travel'}/>
+      <TravelArea/>
 
 
     </Layout>
