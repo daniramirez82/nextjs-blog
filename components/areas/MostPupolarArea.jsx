@@ -2,16 +2,16 @@ import { useState, useEffect } from "react";
 import { getFromNYT } from "../../lib/api";
 import HorizontalCenteredCard from "../cards/HorizontalCenteredCard";
 
-const TechArea = () => {
+export const MostPopularArea = () => {
 
     const [newsArray, setNewsArray] = useState(null);
 
     useEffect(async () => {
-        const techNews = await getFromNYT('technology');
-        console.log(techNews);
-        if (techNews.status === 'ok') {
-            const techNewsSliced = techNews.response.slice(0, 6);
-            setNewsArray(techNewsSliced);
+        const mostPNews = await getFromNYT();
+        console.log(mostPNews);
+        if (mostPNews.status === 'ok') {
+            const mostPNewsSliced = mostPNews.response.slice(0, 6);
+            setNewsArray(mostPNewsSliced);
         }
     }, []);
 
@@ -30,5 +30,3 @@ const TechArea = () => {
 
     )
 }
-
-export default TechArea;

@@ -14,10 +14,10 @@ const MainArea = () => {
     useEffect(async () => {
 
         const homeNews = await getFromNYT('home');
+
         if (homeNews.status === "ok") {
             setMainArticle(homeNews.response[0]);
             setResults3Home(homeNews.response.slice(1, 4));
-
         }
 
     }, [])

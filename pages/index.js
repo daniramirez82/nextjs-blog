@@ -9,18 +9,28 @@ import TwoColMarketing from '../components/areas/TwoColMarketing';
 import ThirdArea from '../components/areas/ThirdArea';
 import SectionTitle from '../components/ui/SectionTitle';
 const FourthArea = dynamic(() => import('../components/areas/FourthArea'));
+const TechArea = dynamic(() => import('../components/areas/TechArea'));
+const TravelArea = dynamic(() => import('../components/areas/TravelArea'));
 import useOnScreen from '../lib/useOnScreen';
 import dynamic from 'next/dynamic';
 import MainArea from '../components/areas/MainArea';
-import { TechArea } from '../components/areas/TechArea';
-import { TravelArea } from '../components/areas/TravelArea';
+import { MostPopularArea } from '../components/areas/MostPupolarArea';
 
 
 export default function Home() {
 
-  //About lazy loading of the movies area
+  //About lazy loading of the movies, tech and travel area
   const [showFourthArea, setShowFourtArea] = useState();
+  const [showTechArea, setShowTechArea] = useState();
+  const [showTravelArea, setShowTravelArea] = useState();
+
   const fouthArea = useRef();
+  const techArea = useRef();
+  const travelArea = useRef();
+  const mostPopArea = useRef();
+
+  const techAreaRefVal = useOnScreen(techArea);
+  const travelAreaRefVal = useOnScreen(travelArea);
   const fouthAreaRefVal = useOnScreen(fouthArea);
   //------------------------------------
 
@@ -32,7 +42,15 @@ export default function Home() {
       setShowFourtArea(fouthAreaRefVal);
     }
 
-  }, [fouthAreaRefVal]);
+    if (!showTechArea) {
+      setShowTechArea(techAreaRefVal);
+    }
+
+    if (!showTravelArea) {
+      setShowTravelArea(travelAreaRefVal);
+    }
+
+  }, [fouthAreaRefVal, techAreaRefVal, travelAreaRefVal]);
 
   return (
     <Layout home>
@@ -64,11 +82,20 @@ export default function Home() {
         {showFourthArea && <FourthArea />}
       </div>
 
-      <SectionTitle category={'Technology'}/>
-      <TechArea/>
+      <div ref={techArea}>
+        <SectionTitle category={'Technology'} />
+        {showTechArea && <TechArea />}
+      </div>
 
-      <SectionTitle category={'Travel'}/>
-      <TravelArea/>
+      <div ref={travelArea}>
+        <SectionTitle category={'Travel'} />
+        {showTravelArea && <TravelArea />}
+      </div>
+
+      <div ref={mostPopArea}>
+        <SectionTitle category={'Most Popular of the Month'}/>
+        <MostPopularArea/>
+      </div>
 
 
     </Layout>

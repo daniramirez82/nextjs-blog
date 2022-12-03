@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getFromNYT } from "../../lib/api";
 import HorizontalDarkCard from "../cards/HorizontalDarkCard";
 
-export const TravelArea = () => {
+const TravelArea = () => {
 
     const [newsArray, setNewsArray] = useState(null);
 
@@ -28,3 +28,5 @@ export const TravelArea = () => {
         </section>
       );
 }
+
+export default TravelArea;
