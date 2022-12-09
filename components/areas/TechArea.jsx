@@ -8,7 +8,6 @@ const TechArea = () => {
 
     useEffect(async () => {
         const techNews = await getFromNYT('technology');
-        console.log(techNews);
         if (techNews.status === 'ok') {
             const techNewsSliced = techNews.response.slice(0, 6);
             setNewsArray(techNewsSliced);

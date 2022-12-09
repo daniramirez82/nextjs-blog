@@ -15,9 +15,13 @@ import useOnScreen from '../lib/useOnScreen';
 import dynamic from 'next/dynamic';
 import MainArea from '../components/areas/MainArea';
 import { MostPopularArea } from '../components/areas/MostPupolarArea';
-import TitlesArea from '../components/areas/TitlesArea';
+import { fixNews } from '../lib/helpers';
 
-export default function Home() {
+function Home({ data }) {
+
+  //SSR
+  const homeNews = fixNews(data);
+  //end of SSR
 
   //About lazy loading of the movies, tech and travel area
   const [showFourthArea, setShowFourtArea] = useState();
@@ -67,7 +71,7 @@ export default function Home() {
       </header>
 
       <SectionTitle category={category} />
-      <MainArea />
+      <MainArea news={homeNews}/>
 
       <SectionTitle category={"Sports"} />
       <SecondArea />
@@ -93,11 +97,22 @@ export default function Home() {
       </div>
 
       <div ref={mostPopArea}>
-        <SectionTitle category={'Most Popular of the Month'}/>
-        <MostPopularArea/>
+        <SectionTitle category={'Most Popular of the Month'} />
+        <MostPopularArea />
       </div>
 
 
     </Layout>
   );
 }
+
+// This gets called on every request
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=vmbJSwb7M61sA8N4FLoA7XGAELlH1eqF');
+  const data = await res.json()
+  // Pass data to the page via props
+  return { props: { data } }
+}
+
+export default Home;

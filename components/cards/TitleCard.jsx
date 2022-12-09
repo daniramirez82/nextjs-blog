@@ -1,10 +1,9 @@
 import Link from 'next/link';
 
 const TitleCard = ({ data }) => {
+    
     const { url, fullDate, title } = data;
-    console.log('date before formating', fullDate);
     const formatedDate = fullDate.toLocaleDateString("en-GB",{month: 'long', year:'numeric', day: 'numeric'});
-    console.log('formated date', formatedDate);
 
     return (
         <Link href={`${url}`}>

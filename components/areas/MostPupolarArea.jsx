@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getFromNYT } from "../../lib/api";
 import HorizontalCardMostPop from '../cards/HorizontalCardMostPop';
 import TitlesArea from "./TitlesArea";
+import SectionTitle from "../ui/SectionTitle";
 
 export const MostPopularArea = () => {
 
@@ -28,7 +29,10 @@ export const MostPopularArea = () => {
                     }) : [1, 2, 3, 4, 5, 6].map(i => <p key={i}>Loading</p>)}
                 </div>
             </section>
-            <div className="basis-[30%] hidden ml-4 lg:block"><TitlesArea/></div>
+            <div className="basis-[30%] hidden ml-4 lg:flex flex-col">
+                <SectionTitle category={'More'}/>
+                <TitlesArea/>
+                </div>
         </div>
 
 
