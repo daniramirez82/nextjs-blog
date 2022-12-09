@@ -9,7 +9,6 @@ export const SecondArea = () => {
 
     useEffect(async () => {
         const sportNews = await getFromNYT('sports');
-        console.log(sportNews);
         if (sportNews.status === 'ok') {
             const sportsNewsSliced = sportNews.response.slice(0, 4);
             setNewsArray(sportsNewsSliced);

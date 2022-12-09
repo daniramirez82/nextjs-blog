@@ -13,9 +13,9 @@ const HorizontalDarkCard = ({ data }) => {
                     width={400}
                     height={800}
                 />
-                <div className='px-4 pb-4'>
+                <div className='px-2 pb-4'>
                 <p className="text-xs pt-2 text-slate-400">{date}</p>
-                <h4 className="text-sm md:text-base pb-2  font-semibold text-slate-100 pt-2">{title}</h4>
+                <h4 className="text-lg pb-2  font-semibold text-slate-100 pt-2">{title}</h4>
                 <p className="text-sm md:text-base line-clamp-4 text-slate-100">{description}</p>
                 </div>
                 

@@ -15,7 +15,7 @@ import useOnScreen from '../lib/useOnScreen';
 import dynamic from 'next/dynamic';
 import MainArea from '../components/areas/MainArea';
 import { MostPopularArea } from '../components/areas/MostPupolarArea';
-
+import TitlesArea from '../components/areas/TitlesArea';
 
 export default function Home() {
 
