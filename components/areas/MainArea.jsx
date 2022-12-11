@@ -8,19 +8,6 @@ import { getFromNYT } from "../../lib/api";
 
 const MainArea = ({ news }) => {
 
-    // const [mainArticle, setMainArticle] = useState();
-    // const [results3Home, setResults3Home] = useState();
-
-    // useEffect(async () => {
-
-    //     const homeNews = await getFromNYT('home');
-
-    //     if (homeNews.status === "ok") {
-    //         setMainArticle(homeNews.response[0]);
-    //         setResults3Home(homeNews.response.slice(1, 4));
-    //     }
-
-    // }, [])
     const results3Home = news.slice(1, 4);
 
 

@@ -16,6 +16,7 @@ import dynamic from 'next/dynamic';
 import MainArea from '../components/areas/MainArea';
 import { MostPopularArea } from '../components/areas/MostPupolarArea';
 import { fixNews } from '../lib/helpers';
+import LoadingAreaDark from '../components/areas/LoadingAreaDark';
 
 function Home({ data }) {
 
@@ -83,17 +84,17 @@ function Home({ data }) {
 
       <div ref={fouthArea}>
         <SectionTitle category={"Movies"} />
-        {showFourthArea && <FourthArea />}
+        {!showFourthArea ?  <LoadingAreaDark/> : <FourthArea />}
       </div>
 
       <div ref={techArea}>
         <SectionTitle category={'Technology'} />
-        {showTechArea && <TechArea />}
+        {!showTechArea ?  <LoadingAreaDark/> :<TechArea />}
       </div>
 
       <div ref={travelArea}>
         <SectionTitle category={'Travel'} />
-        {showTravelArea && <TravelArea />}
+        {!showTravelArea  ?  <LoadingAreaDark/> :<TravelArea />}
       </div>
 
       <div ref={mostPopArea}>

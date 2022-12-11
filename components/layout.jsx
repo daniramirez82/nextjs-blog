@@ -3,6 +3,7 @@ import styles from "./layout.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import NavBar from "./ui/NavBar";
+import Footer from "./areas/Footer";
 export const siteTitle = "Dj's blog";
 
 const name = "Daniel Dj";
@@ -53,8 +54,9 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
 
       <footer className={styles.backToHome}>
-      <p>here goes the footer</p>
+        <Footer />
       </footer>
+      
     </div>
   );
 }
