@@ -1,6 +1,5 @@
 import Head from "next/head";
 import styles from "./layout.module.css";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import NavBar from "./ui/NavBar";
 import Footer from "./areas/Footer";
@@ -8,7 +7,7 @@ export const siteTitle = "Dj's blog";
 
 const name = "Daniel Dj";
 
-export default function Layout({ children, home }) {
+export default function Layout({ children}) {
   const [isShown, setIsShown] = useState(true);
 
   useEffect(() => {

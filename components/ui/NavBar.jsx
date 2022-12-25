@@ -7,19 +7,22 @@ import DropdownMenu, {
 import PageHeader from "@atlaskit/page-header";
 import Avatar from "@atlaskit/avatar";
 import { useDispatch } from "react-redux";
-
+import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const myCategories = [
-  "Latest",
+  "Home",
   "Sports",
   "Technology",
-  "Spain",
-  "FC Barcelona",
-  "Funny Cats",
+  "Food",
+  "Movies",
+  "Fashion",
 ];
 
 const NavBar = () => {
   const dispatch = useDispatch();
+  const categoria = useSelector(state => state.category.category);
+
 
   const clickHandler = (e) => {
     const category = e.target.textContent;
@@ -31,23 +34,29 @@ const NavBar = () => {
   return (
     <div className={`fixed top-0 container -ml-4 ${styles['header-cont']}`}>
       <header className={`${styles.header}`}>
-        <div className={styles["header-avatar"]}>
-          <Avatar
-            appearance="circle"
-            src="/profile.jpg"
-            size="large"
-            name="Daniel Ramirez"
-          />
-          <div className={styles["page-header-cont"]}>
-            <PageHeader>The News</PageHeader>
+        <Link href={'/'}>
+          <div className={styles["header-avatar"]}>
+            <Avatar
+              appearance="circle"
+              src="/profile.jpg"
+              size="large"
+              name="Daniel Ramirez"
+            />
+            <div className={styles["page-header-cont"]}>
+              <PageHeader>The News</PageHeader>
+            </div>
           </div>
-        </div>
+        </Link>
 
         <nav className={`pr-4`}>
           <DropdownMenu trigger="Menu">
             <DropdownItemGroup>
               {myCategories.map((cat) => (
-                <DropdownItem key={cat} onClick={clickHandler}>{cat}</DropdownItem>
+                <div key={cat}>
+                  <Link href={`/category/${cat}`}>
+                    <DropdownItem onClick={clickHandler}>{cat}</DropdownItem>
+                  </Link>
+                </div>
               ))}
             </DropdownItemGroup>
           </DropdownMenu>

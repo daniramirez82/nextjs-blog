@@ -64,7 +64,7 @@ function Home({ data }) {
   }, [fouthAreaRefVal, techAreaRefVal, travelAreaRefVal, mostPopAreaRefVal]);
 
   return (
-    <Layout home>
+    <Layout>
       <ButtonPrimary>Go Up</ButtonPrimary>
 
       <Head>
