@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getFromNYT } from "../../lib/api";
 
 
-export const SecondArea = () => {
+export const SportArea = () => {
 
     const [newsArray, setNewsArray] = useState(null);
 
@@ -19,8 +19,7 @@ export const SecondArea = () => {
     return (
         <section>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {newsArray ? newsArray.map((item) => <li key={item.title} className="list-none"><HorizontalCard data={item} /></li>) :
-                    [1, 2, 3, 4].map(i => <h4 key={i}>Loading</h4>)}
+                {newsArray && newsArray.map((item) => <li key={item.title} className="list-none"><HorizontalCard data={item} /></li>)}
             </div>
         </section>
     )

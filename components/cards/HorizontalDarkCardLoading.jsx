@@ -5,7 +5,7 @@ const HorizontalDarkCardLoading = () => {
     return (
             <div className="wrapper flex flex-col bg-slate-900 rounded  min-h-full">
 
-                <div className='rounded-t min-h-[200px] min-w-[200px] object-cover bg-slate-600'></div>
+                <div className='rounded-t min-h-[200px] min-w-[20px] object-cover bg-slate-600'></div>
 
                 <div className='pb-4'>
                     <div className="h-2 w-10 m-2 rounded bg-slate-400"></div>

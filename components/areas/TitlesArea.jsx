@@ -22,7 +22,7 @@ const TitlesArea = () => {
                             <TitleCard data={item} />
                         </div>
                     );
-                }) : [1, 2, 3, 4, 5, 6].map(i => <p key={i}>Loading</p>)}
+                }) : [1, 2, 3, 4, 5, 6].map(i => <p key={i}>Loading...</p>)}
             </div>
         </section>
 
