@@ -23,9 +23,9 @@ const CategoryArea = ({news}) => {
   return (
     <section>
       <div className="container grid grids-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-        {returnedArray.map((item) => {
+        {returnedArray.map((item, index) => {
           return (
-            <div key={item.title}>
+            <div key={item.title} className={((index + 1)%7) === 0 ? 'md:col-span-3': ''}>
               <HorizontalCenteredCard data={item} />
             </div>
           );

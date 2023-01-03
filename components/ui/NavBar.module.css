@@ -5,7 +5,6 @@
   }
 
   .header-cont{
-    z-index: 999;
     backdrop-filter: blur(8px);
     background-color: rgba(250, 245, 245, 0.386);
   }

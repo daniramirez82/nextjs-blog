@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import styles from './index.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ButtonPrimary from '../components/ui/ButtonPrimary';
@@ -71,9 +70,9 @@ function Home({ data }) {
         <title>{siteTitle}</title>
       </Head>
 
-      <header className={styles.header}>
+      <header className={"flex flex-col mt-[80px] text-slate-900 justify-center"}>
         <hr />
-        <h1 className={styles['title-big']}>THE NEWS</h1>
+        <h1 className={"text-[3.4rem] md:text-[4.5rem] lg:text-[5.5rem] text-center"}>THE NEWS</h1>
         <hr />
       </header>
 

@@ -6,11 +6,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@atlaskit/atlassian-navigation": "^2.3.1",
     "@atlaskit/avatar": "^21.0.1",
     "@atlaskit/button": "^16.3.6",
     "@atlaskit/dropdown-menu": "^11.5.0",
     "@atlaskit/form": "^8.5.8",
     "@atlaskit/page-header": "^10.3.0",
+    "@atlaskit/spinner": "^15.3.0",
     "@atlaskit/textfield": "^5.2.0",
     "@reduxjs/toolkit": "^1.8.5",
     "date-fns": "^2.29.2",
